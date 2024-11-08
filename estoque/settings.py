@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     #my apps
     'estoque.core',
     'estoque.produto',
+    'estoque.stock',
 ]
 
 MIDDLEWARE = [
