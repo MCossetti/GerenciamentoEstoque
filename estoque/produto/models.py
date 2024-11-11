@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse_lazy
 
 class Produto(models.Model): 
     nome = models.CharField(max_length=100)
@@ -12,3 +13,6 @@ class Produto(models.Model):
     
     def __str__(self):
         return self.nome
+    
+    def get_absolute_url(self):
+        return reverse_lazy('produto:produto_detail', kwargs={'pk':self.pk})

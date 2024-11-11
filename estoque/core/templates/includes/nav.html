@@ -8,10 +8,10 @@
       <div class="collapse navbar-collapse" id="navbarsExample02">
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">Home</a>
+            <a class="nav-link active" aria-current="page" href="{% url 'core:index' %}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="produto">Produtos</a>
+            <a class="nav-link" href="{% url 'produto:produto_list' %}">Produtos</a>
           </li>
         </form>
       </div>
