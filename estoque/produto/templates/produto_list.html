@@ -2,7 +2,14 @@
 
 <div class="page-reader">
   <h2>
-    <i class="fa fa-user"> Lista de Produtos</i>
+    Lista de Produtos
+    <span class="pull-right">
+      <a href="{% url 'produto:produto_add' %}">
+        <button type="button" class="btn btn-primary">
+        <span class="fa-plus fa"></span> Adicionar
+        </button>
+      </a>
+    </span>
   </h2>
 
   {% if object_list %}
