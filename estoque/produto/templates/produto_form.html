@@ -16,7 +16,7 @@
 <form method='POST' novalidate>
     {% csrf_token %}
     {% for field in form.visible_fields %}
-        <div class= 'form-group{% if field.errors %} has error {% endif %}}'> 
+        <div class= 'form-group{% if field.errors %} has error {% endif %}'> 
             <label for='{{ field.id_for_label}}'>
                 {% if field.field.required %}
                     <span class='required'> {{ field.label }}</span>
