@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>
+    Estoque Saída
+    <span class="pull-right">
+      <a href="{% url 'estoque:estoque_saida_add' %}">
+        <button type="button" class="btn btn-primary">
+        <span class="fa-plus fa"></span> Adicionar
+        </button>
+      </a>
+    </span>
+  </h2>
+
+{% if object_list %}
+    <table class='table table-striped'>
+        <thead>
+            <tr>
+                <th>Itens</th>
+                <th>Data</th>
+                <th>Funcionário</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for object in object_list %}
+            <tr>
+                <td><a href='{{object.get_absolute_url}}'>{{ object }}</td>
+                <td>{{ object.created }}</td>
+                <td>{{ object.usuario.first_name }}</td> 
+            </tr>
+        {% empty %}
+        
+        {% endfor %}
+        </tbody>
+{% else %}
+    <p class="alert alert-warning">Sem itens na lista.</p>
+{% endif %}
+
+{% endblock content %}
