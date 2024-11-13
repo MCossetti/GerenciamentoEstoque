@@ -1,6 +1,5 @@
 from django.contrib.auth.models import User
 from django.db import models
-from django.urls import reverse_lazy
 from estoque.core.models import TimeStampedModel
 from estoque.produto.models import Produto
 from .managers import EstoqueEntradaManager, EstoqueSaidaManager
@@ -11,8 +10,8 @@ MOVIMENTO = (
 )
 
 class Estoque(TimeStampedModel):
-    usuario = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    movimento = models.CharField(max_length=1, choices=MOVIMENTO)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
+    movimento = models.CharField(max_length=1, choices=MOVIMENTO, blank=True)
 
     class Meta:
         ordering = ('created',)
@@ -27,11 +26,7 @@ class EstoqueEntrada(Estoque):
         proxy=True
         verbose_name = 'Estoque entrada'
         verbose_name_plural = 'Estoque entrada'  
-    
-    def get_absolute_url(self):
-        return reverse_lazy('estoque:estoque_entrada_detail', kwargs={'pk':self.pk})
-
-
+ 
 class EstoqueSaida(Estoque):
     objects = EstoqueSaidaManager()
 
@@ -39,10 +34,6 @@ class EstoqueSaida(Estoque):
         proxy=True
         verbose_name = 'Estoque saida'
         verbose_name_plural = 'Estoque saida'
-    
-    def get_absolute_url(self):
-        return reverse_lazy('estoque:estoque_saida_detail', kwargs={'pk':self.pk})
-
 
 class EstoqueProduto(models.Model):
     estoque = models.ForeignKey(Estoque, on_delete=models.CASCADE, related_name='estoques')

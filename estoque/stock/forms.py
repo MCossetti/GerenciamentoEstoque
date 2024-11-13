@@ -5,7 +5,7 @@ class EstoqueForm(forms.ModelForm):
 
     class Meta:
         model = Estoque
-        fields = '__all__'
+        fields= []
 
 class EstoqueProdutoForm(forms.ModelForm):
 

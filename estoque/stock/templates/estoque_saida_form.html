@@ -9,9 +9,6 @@
     .form-control {
       margin: 10px;
     }
-    .form-control {
-        margin: 10px;
-    }
   </style>
 
 {% endblock css %}
@@ -24,7 +21,7 @@
     <div class="cols">
       <form method="POST" novalidate>
         {% csrf_token %}
-        <legend style="border-bottom: 1px solid #e5e5e5;">Estoque Entrada</legend>
+        <legend style="border-bottom: 1px solid #e5e5e5;">Estoque Saída</legend>
 
         <div class="row">
           <div class="col-sm-6">
@@ -71,7 +68,7 @@
                 <i class="fa fa-floppy-o"></i>
                 Salvar
               </button>
-              <a href="{% url 'estoque:estoque_entrada_list' %}" class="btn btn-danger">
+              <a href="{% url 'estoque:estoque_saida_list' %}" class="btn btn-danger">
                 <i class="fa fa-times"></i>
                 Cancelar
               </a>
@@ -87,69 +84,13 @@
 
 {% block js %}
 
-<script>
-    $(document).ready(function(){
-        //insere classe no primeiro item de produto
-        $('#id_estoque-0-produto').addClass('clProduto');
-        $('#id_estoque-0-quantidade').addClass('clQuantidade');
+  <script src="{% static 'js/estoque_saida.js' %}"></script>
 
-        $('#add-item').click(function(ev) {
-            ev.preventDefault();
-            var count = $('#estoque').children().length;
-            var tmplMarkup = $('#item-estoque').html();
-            var compiledTmpl = tmplMarkup.replace(/__prefix__/g, count);
-            $('div#estoque').append(compiledTmpl)
-
-            //update form count
-            $('#id_estoque-TOTAL_FORMS').attr('value', count + 1);
-
-            //some animate to scroll to view our new form
-            $("html, body").animate({
-                scrollTop: $('#add-item').position().top - 200
-            }, 800);
-
-            $('#id_estoque-' + (count) + '-produto').addClass('clProduto');
-            $('#id_estoque-' + (count) + '-quantidade').addClass('clQuantidade');
-          });
-    });
-
-    let estoque, saldo, campo, quantidade
-
-    $(document).on('change', '.clProduto', function() {
-        let self = $(this)
-        let pk = $(this).val()
-        let url = '/produto/' + pk + '/json/'
-
-        $.ajax({
-          url: url,
-          type: 'GET',
-          success: function(response) {
-            estoque = response.data[0].estoque
-            campo = self.attr('id').replace('produto', 'quantidade')
-            // Remove o valor do campo 'quantidade'
-            $('#' + campo).val('')
-          },
-          error: function(xhr) {
-            
-          }
-        })
-      });
-
-      $(document).on('change', '.clQuantidade', function() {
-        quantidade = $(this).val();
-        saldo = Number(quantidade) + Number(estoque);
-        campo = $(this).attr('id').replace('quantidade', 'saldo')
-        // Atribui o saldo ao campo 'saldo'
-        $('#'+campo).val(saldo)
-    });
-
-
-</script>
-
-<script type="text/html" id="item-estoque">
+  <script type="text/html" id="item-estoque">
     <div id="item-__prefix__" class="form-group">
-        {{ formset.empty_form|bootstrap}}
+    {{ formset.empty_form|bootstrap }}
     </div>
-</script>
+  </script>
+
 
 {% endblock js %}
