@@ -1,12 +1,21 @@
 {% extends 'base.html' %} {% block content %}
 
+<div class="row">
+  <div class="col-sm-6">
+    <form action="." method="GET" class="form-inline">
+      <input type="text" id="search" name="search" class="form-control" placeholder="Busca">
+      <input type="submit" class="btn btn-primary" style="margin-left: 10px;" value="Buscar">
+    </form>
+  </div>
+</div>
+
 <div class="page-reader">
   <h2>
-    Lista de Produtos
+    Estoque
     <span class="pull-right">
       <a href="{% url 'produto:produto_add' %}">
         <button type="button" class="btn btn-primary">
-        <span class="fa-plus fa"></span> Adicionar
+        <span class="fa-plus fa"></span> Adicionar produto
         </button>
       </a>
     </span>
