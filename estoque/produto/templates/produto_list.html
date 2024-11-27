@@ -29,7 +29,7 @@
         <th>Nome</th>
         <th>Preço</th>
         <th class="text-center">Estoque</th>
-        <!-- <th class="text-center">Estoque Minimo</th> -->
+        <th class="text-center">Estoque Minimo</th>
       </tr>
     </thead>
     <tbody>
@@ -38,7 +38,7 @@
         <td><a href="{{object.get_absolute_url}}">{{ object.nome}}</a></td>
         <td>R$ <span class="pull-right">{{ object.preco }}</span></td>       
         <td class="text-center">{{ object.estoque }}</td>
-        <!-- <td class="text-center">{{ object.estoque_minimo }}</td> -->
+        <td class="text-center">{{ object.estoque_minimo }}</td> 
       </tr>
       {% endfor %}
     </tbody>

@@ -46,13 +46,3 @@ class EstoqueProduto(models.Model):
 
     def __str__(self):
         return '{} - {} - {}'.format(self.pk, self.estoque.pk, self.produto)
-
-class HistoricoEstoque(TimeStampedModel):
-    estoque = models.ForeignKey(Estoque, on_delete=models.CASCADE)
-    quantidade = models.IntegerField()
-    estado = models.CharField(max_length=10)
-    observacao = models.CharField(max_length=100, blank=True, null=True)
-
-    def __str__(self):
-        return f"Histórico {self.id} - Estoque {self.estoque.id}"
-    
