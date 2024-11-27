@@ -5,7 +5,10 @@ from django.views.generic import ListView, DetailView
 from estoque.produto.models import Produto
 from .forms import EstoqueForm, EstoqueProdutoForm
 from .models import Estoque, EstoqueEntrada, EstoqueSaida, EstoqueProduto
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
+@method_decorator(login_required, name='dispatch')
 class EstoqueEntradaList(ListView):
     model = EstoqueEntrada
     template_name = 'estoque_list.html'

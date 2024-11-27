@@ -21,6 +21,7 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', default = [], cast=Csv())
 # Application definition
 
 INSTALLED_APPS = [
+    'estoque.account',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -116,8 +117,10 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-LOGIN_URL = '/admin/login/'
-LOGOUT_REDIRECT_URL = 'core:index'
+LOGIN_REDIRECT_URL = 'core:index'
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
