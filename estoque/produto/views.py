@@ -1,40 +1,60 @@
 from django.http import JsonResponse
-from django.shortcuts import render
-from django.views.generic import CreateView, UpdateView
+from django.shortcuts import get_object_or_404, render
+from django.views import View
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from .models import Produto
 from .forms import ProdutoForm
 
-def produto_list(request):
+class ProdutoListView(ListView):
+    model = Produto
     template_name = 'produto_list.html'
-    objects = Produto.objects.all()
-    search = request.GET.get('search')
-    if search:
-        objects = objects.filter(nome__icontains=search)
-    context = {'object_list': objects}
-    return render(request, template_name, context)
+    context_object_name = 'object_list'
 
-def produto_detail(request, pk):
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        search = self.request.GET.get('search')
+        if search:
+            queryset = queryset.filter(nome__icontains=search)
+        return queryset
+
+class ProdutoDetailView(DetailView):
+    model = Produto
     template_name = 'produto_detail.html'
-    obj = Produto.objects.get(pk=pk)
-    context = {'object': obj}
-    return render(request, template_name, context)
+    context_object_name = 'object'
 
-def produto_add(request):
+class ProdutoAddView(View):
     template_name = 'produto_form.html'
-    return render(request, template_name)
 
-class ProdutoCreate(CreateView):
+    def get(self, request):
+        """Renderiza o formulário de adição de produto."""
+        form = ProdutoForm()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+        """Processa a criação de um novo produto."""
+        form = ProdutoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return JsonResponse({'message': 'Produto criado com sucesso.'})
+        return render(request, self.template_name, {'form': form})
+
+class ProdutoCreateView(CreateView):
     model = Produto
     template_name = 'produto_form.html'
     form_class = ProdutoForm
 
-class ProdutoUpdate(UpdateView):
+class ProdutoUpdateView(UpdateView):
     model = Produto
     template_name = 'produto_form.html'
     form_class = ProdutoForm
-    
-def produto_json(request, pk):
-    ''' Retorna o produto, id e estoque. '''
-    produto = Produto.objects.filter(pk=pk)
-    data = [item.to_dict_json() for item in produto]
-    return JsonResponse({'data': data})
+
+class ProdutoJsonView(View):
+    def get(self, request, pk):
+        """Retorna o produto, ID e estoque em formato JSON."""
+        produto = get_object_or_404(Produto, pk=pk)
+        data = {
+            'id': produto.id,
+            'nome': produto.nome,
+            'estoque': produto.estoque,
+        }
+        return JsonResponse({'data': data})

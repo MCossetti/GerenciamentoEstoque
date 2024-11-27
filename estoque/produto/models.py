@@ -2,7 +2,7 @@ from django.db import models
 from django.urls import reverse_lazy
 
 class Produto(models.Model): 
-    nome = models.CharField('Nome:', max_length=100)
+    nome = models.CharField('Nome:', max_length=100, unique=True)
     descricao = models.CharField('Descrição:', max_length=200, blank=True, null=True)
     preco = models.DecimalField('Preço:', max_digits=10, decimal_places=2)
     # categoria = models.ForeignKey('Categoria', on_delete=models.SET_NULL, null=True, blank=True)

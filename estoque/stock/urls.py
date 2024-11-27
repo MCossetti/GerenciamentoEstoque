@@ -5,12 +5,12 @@ app_name = 'estoque'
 
 entrada_patterns = [
     path('', v.EstoqueEntradaList.as_view(), name='estoque_entrada_list'),
-    path('add/', v.estoque_entrada_add, name='estoque_entrada_add'),
+    path('add/', v.EstoqueEntradaAdd.as_view(), name='estoque_entrada_add'),
 ]
 
 saida_patterns = [
     path('', v.EstoqueSaidaList.as_view(), name='estoque_saida_list'),
-    path('add/', v.estoque_saida_add, name='estoque_saida_add'),
+    path('add/', v.EstoqueSaidaAdd.as_view(), name='estoque_saida_add'),
 ]
 
 urlpatterns = [
