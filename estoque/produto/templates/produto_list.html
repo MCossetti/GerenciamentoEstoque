@@ -30,6 +30,7 @@
         <th>Preço</th>
         <th class="text-center">Estoque</th>
         <th class="text-center">Estoque Minimo</th>
+        <th class="text-center">Editar Produto</th>
       </tr>
     </thead>
     <tbody>
@@ -39,6 +40,13 @@
         <td>R$ <span class="pull-right">{{ object.preco }}</span></td>       
         <td class="text-center">{{ object.estoque }}</td>
         <td class="text-center">{{ object.estoque_minimo }}</td> 
+        <td class="text-center">
+          <a href="{% url 'produto:produto_edit' object.pk %}">
+            <button type="button" class="btn btn-success">
+              <span class="fa fa-pencil"></span> Editar
+            </button>
+          </a>
+        </td>
       </tr>
       {% endfor %}
     </tbody>
