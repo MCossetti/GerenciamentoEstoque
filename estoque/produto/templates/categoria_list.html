@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+  <div class="col-sm-6">
+    <form action="." method="GET" class="form-inline">
+      <input type="text" id="search" name="search" class="form-control" placeholder="Busca">
+      <input type="submit" class="btn btn-primary" style="margin-left: 10px;" value="Buscar">
+    </form>
+  </div>
+</div>
+
+<div class="page-reader">
+  <h2>
+    Categorias
+    <span class="pull-right">
+      <a href="{% url 'produto:categoria_add' %}">
+        <button type="button" class="btn btn-primary">
+          <span class="fa-plus fa"></span> Adicionar categoria
+        </button>
+      </a>
+    </span>
+  </h2>
+
+  {% if categorias %}
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th class="text-center">Editar</th>
+        <th class="text-center">Excluir</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for categoria in categorias %}
+      <tr>
+        <td><a href="{{ categoria.get_absolute_url }}">{{ categoria.nome }}</a></td>
+        <td class="text-center">
+          <a href="{% url 'produto:categoria_edit' categoria.pk %}">
+            <button type="button" class="btn btn-success">
+              <span class="fa fa-pencil"></span>
+            </button>
+          </a>
+        </td>
+        <td class="text-center">
+          <form action="{% url 'produto:categoria_delete' categoria.pk %}" method="POST" id="delete-form-{{ categoria.pk }}">
+            {% csrf_token %}
+            <button type="button" class="btn btn-danger" onclick="confirmDelete('{{ categoria.pk }}')">
+              <span class="fa fa-trash"></span>
+            </button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="alert alert-warning">Sem categorias cadastradas</p>
+  {% endif %}
+</div>
+
+<script type="text/javascript">
+  function confirmDelete(categoriaId) {
+    const confirmation = confirm("Tem certeza que deseja excluir esta categoria?");
+    if (confirmation) {
+      document.getElementById('delete-form-' + categoriaId).submit();
+    }
+  }
+</script>
+
+{% endblock content %}

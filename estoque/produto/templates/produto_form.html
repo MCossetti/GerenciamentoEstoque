@@ -4,6 +4,14 @@
 
 {% block content %}
 
+<h2>
+    {% if form.instance.pk %}
+        Editar Produto
+    {% else %}
+        Criar Produto
+    {% endif %}
+</h2>
+
 <form method="POST" novalidate>
     {% csrf_token %}
     {% for field in form.visible_fields %}
@@ -15,14 +23,31 @@
                     {{ field.label }}
                 {% endif %}
             </label>
-            {% render_field field class="form-control" %}
+            {% if field.name == 'categoria' %}
+                <div class="d-flex align-items-center">
+                    {% render_field field class="form-control" %}
+                    <a href="{% url 'produto:categoria_add' %}" class="ml-2">
+                        <button type="button" class="btn btn-primary">
+                            <span class="fa fa-plus"></span> Criar Categoria
+                        </button>
+                    </a>
+                </div>
+            {% else %}
+                {% render_field field class="form-control" %}
+            {% endif %}
             {% for error in field.errors %}
                 <span class="text-danger">{{ error }}</span>
             {% endfor %}
         </div>
     {% endfor %}
-    <button type="submit" class="btn btn-success">Cadastrar</button>
-
+    
+    <button type="submit" class="btn btn-success">
+        {% if form.instance.pk %}
+            Atualizar
+        {% else %}
+            Criar
+        {% endif %}
+    </button>
 </form>
 
 {% endblock content %}
