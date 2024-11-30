@@ -4,5 +4,5 @@ from estoque.core import views as v
 app_name = 'core'
 
 urlpatterns=[
-    path('', v.index, name='index')
+    path('', v.IndexView.as_view(), name='index')
 ]

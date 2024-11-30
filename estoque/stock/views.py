@@ -30,7 +30,6 @@ class DarBaixaEstoque(View):
             produto = Produto.objects.get(pk=item.produto.pk)
             produto.estoque = item.saldo
             produto.save()
-        print('Estoque atualizado com sucesso.')
 
 @method_decorator(login_required, name='dispatch')
 class EstoqueAddView(View):

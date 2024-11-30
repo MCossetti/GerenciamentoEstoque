@@ -1,0 +1,349 @@
+/* Remove margens e paddings */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.vsc-initialized {
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove estilos indesejados */
+body,
+html {
+  font-family: Arial, sans-serif;
+  line-height: 1.4;
+}
+
+/* Configurações básicas */
+ol,
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Outros resets que você possa querer */
+table {
+  border-collapse: collapse;
+}
+
+input,
+button,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  outline: none;
+}
+
+.container {
+  margin: 0;
+  padding: 0;
+  width: 100vw; /* Largura da tela */
+  height: 100vh;
+}
+
+.login,
+.login * {
+  box-sizing: border-box;
+}
+
+.login {
+  background: #ffffff;
+  flex-shrink: 0;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.error-message {
+  align-items: center;
+  justify-content: flex-start;
+  color: red;
+  margin: 20px 0 0 0px;
+}
+
+.rectangle-16 {
+  background: var(--relia-energy-primary-color, #5584ce);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 720px;
+  top: 0px;
+
+}
+
+.img {
+  width: 830px;      
+  height: 750px;        
+  object-fit: cover; 
+}
+
+.rectangle-15 {
+  background: #ffffff;
+  width: 50%;
+  height: 100%;
+  margin-right: 0;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.button {
+  color: white;
+  background-color: none;
+  border-radius: 10px;
+  border-width: 1px;
+  border-style: solid;
+  border-image: var(
+    --relia-energy-gradient,
+    linear-gradient(135deg, rgba(20, 173, 214, 1) 0%, rgba(56, 66, 149, 1) 100%)
+  );
+  border-image-slice: 1;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 100px;
+  height: 46px;
+  position: relative;
+}
+
+.frame-32 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  left: 150px;
+  top: 180px;
+}
+
+.frame-25 {
+  margin: 15px;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.please-sign-in {
+  color: var(--relia-energy-black, #272525);
+  text-align: left;
+  font-family: var(--heading-2-font-family, "Nunito-ExtraBold", sans-serif);
+  font-size: var(--heading-2-font-size, 28px);
+  font-weight: var(--heading-2-font-weight, 800);
+  position: relative;
+}
+
+.frame-30 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 100%;
+  position: relative;
+}
+
+.frame-29 {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.frame-26 {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.email {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 330px;
+  position: relative;
+}
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 350px;
+  position: relative;
+}
+
+.input-label {
+  color: var(--grey-100, #121212);
+  text-align: left;
+  font-family: var(--body-2-normal-font-family, "Nunito-Regular", sans-serif);
+  font-size: var(--body-2-normal-font-size, 14px);
+  line-height: var(--body-2-normal-line-height, 24px);
+  font-weight: var(--body-2-normal-font-weight, 400);
+  position: relative;
+}
+
+.search {
+  flex-shrink: 0;
+  width: 350px;
+  height: 50px;
+  position: static;
+}
+
+.rectangle-3 {
+  border-radius: 10px;
+  border-style: solid;
+  border-color: var(--grey-40, #d0d0d0);
+  border-width: 1px;
+  width: 100%;
+  height: 60.98%;
+  position: absolute;
+  right: 0%;
+  left: 0%;
+  bottom: 0%;
+  top: 39.02%;
+}
+
+.frame-2 {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  align-items: center;
+  justify-content: flex-start;
+  width: 90.86%;
+  height: 29.27%;
+  position: absolute;
+  right: 5.71%;
+  left: 3.43%;
+  bottom: 15.85%;
+  top: 54.88%;
+}
+
+.frame-11 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  width: 304px;
+  height: 24px;
+  position: relative;
+}
+
+.placeholder {
+  color: var(--grey-50, #a3a3a3);
+  text-align: left;
+  font-family: var(--body-2-normal-font-family, "Nunito-Regular", sans-serif);
+  font-size: var(--body-2-normal-font-size, 14px);
+  line-height: var(--body-2-normal-line-height, 24px);
+  font-weight: var(--body-2-normal-font-weight, 400);
+  position: relative;
+}
+
+.password {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 330px;
+  position: relative;
+}
+
+.frame-28 {
+  display: flex;
+  flex-direction: row;
+  gap: 76px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.i-forgot-my-password {
+  background: var(
+    --relia-energy-gradient,
+    linear-gradient(135deg, rgba(20, 173, 214, 1) 0%, rgba(56, 66, 149, 1) 100%)
+  );
+  padding-bottom: 5px;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: left;
+  font-family: var(--body-2-normal-font-family, "Nunito-Regular", sans-serif);
+  font-size: var(--body-2-normal-font-size, 14px);
+  line-height: var(--body-2-normal-line-height, 24px);
+  font-weight: var(--body-2-normal-font-weight, 400);
+  position: relative;
+}
+
+.button2 {
+  color: white;
+  background: var(
+    --relia-energy-gradient,
+    linear-gradient(135deg, rgba(20, 173, 214, 1) 0%, rgba(56, 66, 149, 1) 100%)
+  );
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 350px;
+  height: 50px;
+  position: relative;
+}
+
+.password-field {
+  position: relative;
+}
+
+#toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 100%;
+  }
+}

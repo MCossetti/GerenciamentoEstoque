@@ -1,16 +1,85 @@
-{% extends 'base.html' %} {% block content %}
-<h1>Login</h1>
-{% if forms.errors %}
-<p>Username ou Password não conferem, favor tentar novamente</p>
-{% else %}
-<p>Utilize o formulário para fazer o login</p>
-{% endif %}
-<div class="login-form">
-  <form action="{% url 'login' %}" method="post">
-    {{form.as_p}} {% csrf_token %}
-    <input type="hidden" name="next" value="{{next}}" />
-    <p><input type="submit" value="Login" /></p>
-  </form>
-  <p><a href="{% url 'password_reset' %}">Esqueceu sua senha?</a></p>
+{% extends 'base.html' %} {% block content %} {% load static %}
+
+<link rel="stylesheet" href="{% static 'login/css/style.css' %}">
+<div class="login">
+  <div class="rectangle-16"></div>
+  <img
+    class="rectangle-16 img"
+    src="{% static 'login/images/estoque.png' %}"
+  />
+  <div class="rectangle-15"></div>
+    <div class="frame-32">
+      <div class="frame-25">
+        <p class="please-sign-in">Bem-vindo de volta!!</p>
+      </div>
+      <div class="frame-30">
+        <form action="{% url 'login' %}" method="post" class="login-form">
+        {% csrf_token %}
+        <div class="frame-29">
+          <div class="frame-26">
+            <div class="email">
+              <div class="input-field">
+                <div class="input-label">Usuário</div>
+                <div class="search">
+                  <div class="rectangle-3"></div>
+                  <div class="frame-2">
+                    <div class="frame-11">
+                      <input
+                        type="text"
+                        name="username"
+                        id="id_username"
+                        placeholder="Nome de usuário"
+                        class="placeholder frame-11"
+                        value="{{ form.username.value|default:'' }}"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="password">
+              <div class="input-field">
+                <div class="input-label">Senha</div>
+                <div class="search">
+                  <div class="rectangle-3"></div>
+                  <div class="frame-2">
+                    <div class="frame-11">
+                      <input
+                        type="password"
+                        name="password"
+                        id="id_password"
+                        class="placeholder frame-11"
+                      />
+                      <button type="button" id="toggle-password"> <img src="{% static 'login/images/eye.svg' %}" alt=""> </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="frame-28">
+            <a href="{% url 'password_reset' %}" class="i-forgot-my-password">Esqueceu sua senha?</a>
+          </div>
+        </div>
+        <div class="button2">
+            <button type="submit" class="button2">Login</button>
+        </div>
+        <!-- Mensagens de erro -->
+        {% if form.errors %}
+        <p class="error-message">Usuario ou Senha não conferem</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
 </div>
+
+  <script>
+    // Script para alternar a visibilidade da senha
+    document.getElementById('toggle-password').addEventListener('click', function () {
+      var passwordField = document.getElementById('id_password');
+      var passwordType = passwordField.type === 'password' ? 'text' : 'password';
+      passwordField.type = passwordType;
+    });
+  </script>
+
 {% endblock %}

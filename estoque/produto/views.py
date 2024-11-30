@@ -26,12 +26,10 @@ class ProdutoAddView(View):
     template_name = 'produto_form.html'
 
     def get(self, request):
-        """Renderiza o formulário de adição de produto."""
         form = ProdutoForm()
         return render(request, self.template_name, {'form': form})
 
     def post(self, request):
-        """Processa a criação de um novo produto."""
         form = ProdutoForm(request.POST)
         if form.is_valid():
             form.save()
@@ -50,7 +48,6 @@ class ProdutoUpdateView(UpdateView):
 
 class ProdutoJsonView(View):
     def get(self, request, pk):
-        """Retorna o produto, ID e estoque em formato JSON."""
         produto = get_object_or_404(Produto, pk=pk)
         data = {
             'id': produto.id,

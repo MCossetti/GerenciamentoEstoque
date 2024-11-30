@@ -25,8 +25,8 @@
     </div>
     <div class="mt-3 mt-lg-0">
         {% if request.user.is_authenticated %} 
-        <form action="{% url 'logout' %}" method="post">
-                Ola: {{request.user.username}}
+        <form style="color:white;" action="{% url 'logout' %}" method="post">
+                {{request.user.username}}
                 {% csrf_token %}
                 <button type="submit" class="btn btn_light mx-3">Logout</button>
             </form>
