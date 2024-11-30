@@ -1,11 +1,10 @@
 from django.http import JsonResponse
-from django.shortcuts import get_object_or_404, render
 from django.views import View
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, TemplateView
 from .models import Produto
 from .forms import ProdutoForm
 
-class ProdutoListView(ListView):
+class ProdutoList(ListView):
     model = Produto
     template_name = 'produto_list.html'
     context_object_name = 'object_list'
@@ -17,41 +16,27 @@ class ProdutoListView(ListView):
             queryset = queryset.filter(nome__icontains=search)
         return queryset
 
-class ProdutoDetailView(DetailView):
+class ProdutoDetail(DetailView):
     model = Produto
     template_name = 'produto_detail.html'
     context_object_name = 'object'
 
-class ProdutoAddView(View):
+
+class ProdutoAddView(TemplateView):
     template_name = 'produto_form.html'
 
-    def get(self, request):
-        form = ProdutoForm()
-        return render(request, self.template_name, {'form': form})
-
-    def post(self, request):
-        form = ProdutoForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return JsonResponse({'message': 'Produto criado com sucesso.'})
-        return render(request, self.template_name, {'form': form})
-
-class ProdutoCreateView(CreateView):
+class ProdutoCreate(CreateView):
     model = Produto
     template_name = 'produto_form.html'
     form_class = ProdutoForm
 
-class ProdutoUpdateView(UpdateView):
+class ProdutoUpdate(UpdateView):
     model = Produto
     template_name = 'produto_form.html'
     form_class = ProdutoForm
 
-class ProdutoJsonView(View):
-    def get(self, request, pk):
-        produto = get_object_or_404(Produto, pk=pk)
-        data = {
-            'id': produto.id,
-            'nome': produto.nome,
-            'estoque': produto.estoque,
-        }
+class ProdutoJson(View):
+    def get(self, request, pk, *args, **kwargs):
+        produto = Produto.objects.filter(pk=pk)
+        data = [item.to_dict_json() for item in produto]
         return JsonResponse({'data': data})

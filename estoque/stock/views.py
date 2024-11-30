@@ -1,12 +1,13 @@
-from django.contrib.auth.decorators import login_required
 from django.forms import inlineformset_factory
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, resolve_url
-from django.utils.decorators import method_decorator
-from django.views.generic import ListView, DetailView, View
+from django.views import View
+from django.views.generic import ListView, DetailView
 from estoque.produto.models import Produto
 from .forms import EstoqueForm, EstoqueProdutoForm
 from .models import Estoque, EstoqueEntrada, EstoqueSaida, EstoqueProduto
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 @method_decorator(login_required, name='dispatch')
 class EstoqueEntradaList(ListView):
@@ -22,72 +23,79 @@ class EstoqueDetail(DetailView):
     model = Estoque
     template_name = 'estoque_detail.html'
 
-class DarBaixaEstoque(View):
-    @staticmethod
-    def dar_baixa_estoque(form):
-        produtos = form.estoques.all()
+class EstoqueBaixa(View):
+    def __init__(self, form):
+        self.form = form
+
+    def atualizar_estoque(self):
+        produtos = self.form.estoques.all()
         for item in produtos:
             produto = Produto.objects.get(pk=item.produto.pk)
             produto.estoque = item.saldo
             produto.save()
+        print('Estoque atualizado com sucesso.')
 
-@method_decorator(login_required, name='dispatch')
-class EstoqueAddView(View):
+class EstoqueAdd(View):
     template_name = None
     movimento = None
-    url_redirect = None
+    url = "estoque:estoque_detail"
+
+    def get_item_estoque_formset(self):
+        return inlineformset_factory(
+            Estoque,
+            EstoqueProduto,
+            form=EstoqueProdutoForm,
+            extra=0,
+            can_delete=False,
+            min_num=1,
+            validate_min=True,
+        )
 
     def get_context_data(self, form, formset):
-        return {'form': form, 'formset': formset}
+        return {"form": form, "formset": formset}
 
-    def get(self, request):
+    def post(self, request, *args, **kwargs):
         estoque_form = Estoque()
-        item_estoque_formset = inlineformset_factory(
-            Estoque,
-            EstoqueProduto,
-            form=EstoqueProdutoForm,
-            extra=0,
-            can_delete=False,
-            min_num=1,
-            validate_min=True,
-        )
-        form = EstoqueForm(instance=estoque_form, prefix='main')
-        formset = item_estoque_formset(instance=estoque_form, prefix='estoque')
-        context = self.get_context_data(form, formset)
-        return render(request, self.template_name, context)
+        item_estoque_formset = self.get_item_estoque_formset()
 
-    def post(self, request):
-        estoque_form = Estoque()
-        item_estoque_formset = inlineformset_factory(
-            Estoque,
-            EstoqueProduto,
-            form=EstoqueProdutoForm,
-            extra=0,
-            can_delete=False,
-            min_num=1,
-            validate_min=True,
+        form = EstoqueForm(
+            request.POST,
+            instance=estoque_form,
+            prefix="main",
         )
-        form = EstoqueForm(request.POST, instance=estoque_form, prefix='main')
-        formset = item_estoque_formset(request.POST, instance=estoque_form, prefix='estoque')
-        
+        formset = item_estoque_formset(
+            request.POST,
+            instance=estoque_form,
+            prefix="estoque",
+        )
+
         if form.is_valid() and formset.is_valid():
-            form = form.save(commit=False)
-            form.usuario = request.user
-            form.movimento = self.movimento
-            form.save()
+            estoque = form.save(commit=False)
+            estoque.usuario = request.user
+            estoque.movimento = self.movimento
+            estoque.save()
+            formset.instance = estoque
             formset.save()
-            DarBaixaEstoque.dar_baixa_estoque(form)
-            return HttpResponseRedirect(resolve_url(self.url_redirect, form.pk))
-        
+            EstoqueBaixa(estoque).atualizar_estoque()
+            return HttpResponseRedirect(resolve_url(self.url, estoque.pk))
+
         context = self.get_context_data(form, formset)
         return render(request, self.template_name, context)
 
+    def get(self, request, *args, **kwargs):
+        estoque_form = Estoque()
+        item_estoque_formset = self.get_item_estoque_formset()
 
-@method_decorator(login_required, name='dispatch')
-class EstoqueEntradaAdd(EstoqueAddView):
-    template_name = 'estoque_entrada_form.html'
-    movimento = 'e'
-    url_redirect = 'estoque:estoque_detail'
+        form = EstoqueForm(instance=estoque_form, prefix="main")
+        formset = item_estoque_formset(instance=estoque_form, prefix="estoque")
+
+        context = self.get_context_data(form, formset)
+        return render(request, self.template_name, context)
+
+@method_decorator(login_required, name="dispatch")
+class EstoqueEntradaAdd(EstoqueAdd):
+    template_name = "estoque_entrada_form.html"
+    movimento = "e"
 
 @method_decorator(login_required, name='dispatch')
 class EstoqueSaidaList(ListView):
@@ -95,13 +103,13 @@ class EstoqueSaidaList(ListView):
     template_name = 'estoque_list.html'
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+        context = super(EstoqueSaidaList, self).get_context_data(**kwargs)
         context['titulo'] = 'Saída'
         context['url_add'] = 'estoque:estoque_saida_add'
         return context
 
-@method_decorator(login_required, name='dispatch')
-class EstoqueSaidaAdd(EstoqueAddView):
-    template_name = 'estoque_saida_form.html'
-    movimento = 's'
-    url_redirect = 'estoque:estoque_detail'
+
+@method_decorator(login_required, name="dispatch")
+class EstoqueSaidaAdd(EstoqueAdd):
+    template_name = "estoque_saida_form.html"
+    movimento = "s"

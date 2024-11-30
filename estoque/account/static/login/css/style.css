@@ -96,6 +96,8 @@ textarea {
   height: 100%;
   margin-right: 0;
   position: absolute;
+  align-items: center;
+  justify-content: center;
   left: 0px;
   top: 0px;
 }
