@@ -14,8 +14,14 @@ class ProdutoList(ListView):
     def get_queryset(self):
         queryset = super().get_queryset()
         search = self.request.GET.get('search')
+        ordering = self.request.GET.get('ordering', '')
+
         if search:
             queryset = queryset.filter(nome__icontains=search)
+
+        if ordering:
+            queryset = queryset.order_by(ordering)
+
         return queryset
 
 class ProdutoDetail(DetailView):

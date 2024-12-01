@@ -17,7 +17,7 @@ class Estoque(TimeStampedModel):
         ordering = ('created',)
 
     def __str__(self):
-        return '{} - {}'.format(self.pk, self.created.strftime('%d-%m-%Y'))
+        return '{}'.format(self.pk)
    
 class EstoqueEntrada(Estoque):
     objects = EstoqueEntradaManager()
