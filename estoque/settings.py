@@ -128,6 +128,8 @@ LOGOUT_URL = 'logout'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+ROLEPERMISSIONS_MODULE = 'account.roles'
+
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # EMAIL_HOST= config('EMAIL_HOST')

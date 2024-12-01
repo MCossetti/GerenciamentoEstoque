@@ -1,10 +1,10 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <a class="navbar-brand" href="#">Estoque</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <div class="collapse navbar-collapse  bg-body-tertiary" id="navbarsExampleDefault">
         {% if request.user.is_authenticated %}
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
@@ -20,20 +20,20 @@
                         <a class="dropdown-item" href="{% url 'estoque:estoque_saida_list' %}">Saída</a>
                     </div>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Bola</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown01">
+                        {% if request.user.is_authenticated %} 
+                        {% if request.user.is_superuser %} 
+                            <a class="dropdown-item" href="{% url 'admin:index' %}">Configuração</a>
+                        {% endif %}
+                        <form style="color:white;" action="{% url 'logout' %}" method="post">
+                                {% csrf_token %}
+                            <button type="submit" style="background: none; border: none; margin-left: 18px;" class="">Logout</button>
+                        </form>
+                        {% endif %}
+                    </div>
+                </li>
             </ul>
         {% endif %}
-    </div>
-    <div class="mt-3 mt-lg-0">
-        {% if request.user.is_authenticated %} 
-        <form style="color:white;" action="{% url 'logout' %}" method="post">
-                {{request.user.username}}
-                {% csrf_token %}
-                <button type="submit" class="btn btn_light mx-3">Logout</button>
-            </form>
-        {% else %}
-            <div class="mt-3 mt-lg-0">
-                <a href="# " class="btn btn_light mx-3"></a>
-            </div>
-        {% endif %}
-    </div>
 </nav>
