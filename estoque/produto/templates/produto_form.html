@@ -12,7 +12,7 @@
     {% endif %}
 </h2>
 
-<form method="POST" novalidate>
+<form method="POST" enctype="multipart/form-data" novalidate>
     {% csrf_token %}
     {% for field in form.visible_fields %}
         <div class="form-group{% if field.errors %} has-error {% endif %}">
@@ -23,7 +23,14 @@
                     {{ field.label }}
                 {% endif %}
             </label>
-            {% if field.name == 'categoria' %}
+            {% if field.name == 'imagem' %}
+                {% if form.instance.imagem %}
+                    <div class="mb-2">
+                        <img src="{{ form.instance.imagem.url }}" alt="Prévia da imagem" style="max-width: 150px; height: auto;">
+                    </div>
+                {% endif %}
+                {% render_field field class="form-control-file" %}
+            {% elif field.name == 'categoria' %}
                 <div class="d-flex align-items-center">
                     {% render_field field class="form-control" %}
                     <a href="{% url 'produto:categoria_add' %}" class="ml-2">

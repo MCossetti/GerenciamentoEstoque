@@ -8,6 +8,7 @@ class Produto(models.Model):
     categoria = models.ForeignKey('Categoria', on_delete=models.SET_NULL, null=True, blank=True)
     estoque = models.IntegerField('Estoque Atual:')
     estoque_minimo = models.PositiveIntegerField('Estoque Mínimo:', default=0)
+    imagem = models.ImageField(upload_to='produtos/', blank=True, null=True) 
     
     class Meta:
         ordering = ('nome',)
@@ -23,6 +24,7 @@ class Produto(models.Model):
             'pk': self.pk,
             'produto': self.nome,
             'estoque':self.estoque,
+            'imagem_url': self.imagem.url if self.imagem else None
         }
 
 class Categoria(models.Model):

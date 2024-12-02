@@ -8,6 +8,16 @@
     <table class="table table-user-information">
         <tbody>
             <tr>
+                <th class="text-right"></th>
+                <td>
+                    {% if object.imagem %}
+                        <img src="{{ object.imagem.url }}" alt="{{ object.nome }}" style="max-width: 200px; height: auto;">
+                    {% else %}
+                        <span>Sem imagem disponível</span>
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
                 <th class="text-right">Nome</th>
                 <td>{{ object.nome }}</td>
             </tr>
