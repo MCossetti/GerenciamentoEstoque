@@ -1,43 +1,47 @@
-{% extends 'base.html' %} {% block content %}
-<a class="btn btn-primary" href="{% url 'produto:produto_list' %}"> Voltar</a>
-<h1>
-  {{ object }}
-</h1>
+{% extends 'base.html' %} {% block content %} {% load static %}
+<a href="{% url 'produto:produto_list' %}"> </a>
 
-<div class="col-sm-6">
-    <table class="table table-user-information">
-        <tbody>
-            <tr>
-                <th class="text-right"></th>
-                <td>
+<link rel="stylesheet" href="{% static 'detail/css/style.css' %}">
+
+<div class="stocks-and-inventory-stock">
+  <a class="" href="{% url 'produto:produto_list' %}"> </a>
+  <div class="rectangle-38"></div>
+  <div class="frame-141">
+    <div class="stock-list">Detalhes do Produto</div>
+    <div class="frame-140">
+      <div class="table">
+        <div class="">
+          <div class="nome-produto">Nome</div>
+          <div class="image">Imagem</div>
+          <div class="category">Categoria</div>
+          <div class="qtd-estoque-minimo ">Estoque Minimo</div>
+          <div class="unit-price">Preço</div>
+          <div class="in-stock">Estoque</div>
+        <div class="table-rows">
+          <div class="table-row-1">
+            <div class="table-row">
+              <div class="frame-139">
+                <td class="rectangle-39">  
                     {% if object.imagem %}
-                        <img src="{{ object.imagem.url }}" alt="{{ object.nome }}" style="max-width: 200px; height: auto;">
+                        <img src="{{ object.imagem.url }}" alt="{{ object.nome }}" style="max-width: 200px; height: auto; margin-left: 80px ;">
                     {% else %}
                         <span>Sem imagem disponível</span>
                     {% endif %}
-                </td>
-            </tr>
-            <tr>
-                <th class="text-right">Nome</th>
-                <td>{{ object.nome }}</td>
-            </tr>
-            <tr>
-                <th class="text-right">Preço</th>
-                <td>{{ object.preco }}</td>
-            </tr>
-            <tr>
-                <th class="text-right">Estoque</th>
-                <td>{{ object.estoque }}</td>
-            </tr>
-            <tr>
-                <th class="text-right">Estoque Mínimo</th>
-                <td>{{ object.estoque_minimo }}</td>
-            </tr>
-            <tr>
-                <th class="text-right">Categoria</th>
-                <td>{{ object.categoria }}</td>
-            </tr>
-        </tbody>
-    </table>
+                <div class="group-726">
+                  <div class="nome"><a href="{{object.get_absolute_url}}">{{ object.nome}}</a></div>
+                  <div class="categorias">{{ object.categoria }}</div>
+                  <div class="estoque_minimo">{{ object.estoque_minimo }}</div>
+                  <div class="estoque">{{ object.estoque }}</div>
+                  <div class="preco">
+                    R$ <span class="">{{ object.preco }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock content %}

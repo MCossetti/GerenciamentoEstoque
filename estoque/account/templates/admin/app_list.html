@@ -2,7 +2,7 @@
 
 {% if app_list %}
   {% for app in app_list %}
-    {% if app.app_label != 'produto'%} 
+    {% if app.app_label == 'auth'%} 
       <div class="app-{{ app.app_label }} module{% if app.app_url in request.path|urlencode %} current-app{% endif %}">
         <table>
           <caption>

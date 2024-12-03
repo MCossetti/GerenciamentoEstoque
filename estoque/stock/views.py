@@ -107,7 +107,7 @@ class EstoqueSaidaList(ListView):
     template_name = 'estoque_list.html'
 
     def get_queryset(self):
-        return EstoqueEntrada.objects.all().order_by('-created')
+        return EstoqueSaida.objects.all().order_by('-created')
 
     def get_context_data(self, **kwargs):
         context = super(EstoqueSaidaList, self).get_context_data(**kwargs)
