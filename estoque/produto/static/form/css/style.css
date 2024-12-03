@@ -1,0 +1,323 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.content {
+  display: none;
+  margin: 0;
+  padding: 0;
+}
+
+.stocks-and-inventory-stock,
+.stocks-and-inventory-stock * {
+  box-sizing: border-box;
+}
+
+.stocks-and-inventory-stock {
+  background: #f8f9fd;
+  flex-shrink: 0;
+  height: 800px;
+  width: 1314px;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  margin: 0px;
+  padding-top: 0;
+  padding-left: 250px;
+}
+
+.rectangle-38 {
+  background: #ffffff;
+  border-radius: 20px;
+  width: 1170px;
+  height: 655px;
+  position: absolute;
+  left: 40px;
+  top: 72px;
+}
+
+.button {
+  background: var(
+    --relia-energy-gradient,
+    linear-gradient(135deg, rgba(20, 173, 214, 1) 0%, rgba(56, 66, 149, 1) 100%)
+  );
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  width: 333px;
+  height: 46px;
+  position: absolute;
+  left: 700px;
+  top: 578px;
+}
+
+.primary-button {
+  color: #ffffff;
+  text-align: left;
+  font-family: var(--body-2-normal-font-family, "Nunito-Regular", sans-serif);
+  font-size: var(--body-2-normal-font-size, 14px);
+  line-height: var(--body-2-normal-line-height, 24px);
+  font-weight: var(--body-2-normal-font-weight, 400);
+  position: relative;
+}
+
+.button3 {
+  background: none;
+  width: 333px;
+  height: 46px;
+  align-items: center;
+  justify-content: center;
+  left: 140px;
+}
+
+.group-37 {
+  width: 333px;
+  height: 440px;
+  position: static;
+}
+
+.frame-58 {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  align-items: center;
+  justify-content: flex-start;
+  position: absolute;
+  left: 90px;
+  top: 100px;
+}
+
+.add-photo {
+  flex-shrink: 0;
+  width: 170px;
+  height: 170px;
+  position: relative;
+}
+
+.ellipse-11 {
+  border-radius: 50%;
+  border-style: dashed;
+  border-color: var(--grey-20, #e8e8e8);
+  border-width: 1px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  right: 0%;
+  left: 0%;
+  bottom: 0%;
+  top: 0%;
+}
+
+.ellipse-12 {
+  background: var(--grey-10, #f2f2f2);
+  border-radius: 50%;
+  width: 88.24%;
+  height: 88.24%;
+  position: absolute;
+  right: 5.88%;
+  left: 5.88%;
+  bottom: 5.88%;
+  top: 5.88%;
+}
+
+.frame-56 {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-start;
+  width: 50.59%;
+  height: 37.65%;
+  position: absolute;
+  right: 24.71%;
+  left: 24.71%;
+  bottom: 31.18%;
+  top: 31.18%;
+}
+
+.upload-photo {
+  color: var(--grey-70, #515151);
+  text-align: left;
+  font-family: var(--body-2-normal-font-family, "Nunito-Regular", sans-serif);
+  font-size: var(--body-2-normal-font-size, 14px);
+  line-height: var(--body-2-normal-line-height, 24px);
+  font-weight: var(--body-2-normal-font-weight, 400);
+  position: relative;
+}
+
+.frame-57 {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.allowed-format-jpg-jpeg-and-png {
+  text-align: center;
+  font-family: var(--body-2-normal-font-family, "Nunito-Regular", sans-serif);
+  font-size: var(--body-2-normal-font-size, 14px);
+  line-height: var(--body-2-normal-line-height, 24px);
+  font-weight: var(--body-2-normal-font-weight, 400);
+  position: relative;
+}
+
+.max-file-size-2-mb {
+  text-align: center;
+  font-family: var(--body-2-normal-font-family, "Nunito-Regular", sans-serif);
+  font-size: var(--body-2-normal-font-size, 14px);
+  line-height: var(--body-2-normal-line-height, 24px);
+  font-weight: var(--body-2-normal-font-weight, 400);
+  position: relative;
+}
+
+.frame-55 {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  left: 450px;
+  top: 85px;
+}
+
+.frame-50 {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 350px;
+  position: relative;
+}
+
+.input-field2 {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 350px;
+  position: relative;
+}
+
+.input-label {
+  color: var(--grey-100, #121212);
+  text-align: left;
+  font-family: var(--body-2-normal-font-family, "Nunito-Regular", sans-serif);
+  font-size: var(--body-2-normal-font-size, 14px);
+  line-height: var(--body-2-normal-line-height, 24px);
+  font-weight: var(--body-2-normal-font-weight, 400);
+  position: relative;
+}
+
+.frame-51 {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.frame-52 {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.frame-49 {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-start;
+  position: absolute;
+  left: 60px;
+  top: 80px;
+  margin: 0;
+  padding: 0;
+}
+
+.stock {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.header {
+  width: 1180px;
+  height: 100px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.frame-22 {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  left: 16px;
+  top: 26px;
+}
+
+.frame-1 {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.group-82 {
+  width: 66.64%;
+  height: 76%;
+  position: absolute;
+  right: 16.69%;
+  left: 16.67%;
+  bottom: 11.5%;
+  top: 12.5%;
+  overflow: visible;
+}
+
+.welcome-mr-otor-john {
+  color: #000000;
+  text-align: left;
+  font-family: var(--heading-4-font-family, "Nunito-ExtraBold", sans-serif);
+  font-size: var(--heading-4-font-size, 20px);
+  font-weight: var(--heading-4-font-weight, 800);
+  position: relative;
+  padding: 0;
+  margin: 0;
+}

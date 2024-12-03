@@ -1,42 +1,57 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% load static %}
 
-<a class="btn btn-primary" href="{% url 'produto:produto_list' %}"> Voltar</a>
+<link rel="stylesheet" href="{% static 'list/css/style.css' %}">
 
-<h2>
-    Estoque {{ titulo }}
-    <span class="pull-right">
-      <a href="{% url url_add %}">
-        <button type="button" class="btn btn-primary">
-        <span class="fa-plus fa"></span> Adicionar
-        </button>
-      </a>
-    </span>
-  </h2>
-
-{% if object_list %}
-    <table class='table table-striped'>
-        <thead>
-            <tr>
-                <th>Itens</th>
-                <th>Data</th>
-                <th>Funcionário</th>
-            </tr>
-        </thead>
-        <tbody>
+<div class="stocks-and-inventory-stock">
+    <a class="" href="{% url 'produto:produto_list' %}"> </a>
+  <div class="update-stock-list">Estoque {{ titulo }}</div>
+  <div class="button">
+    <div class="button2">
+        <a href="{% url url_add %}">
+            <button type="button" class="button2">
+            <span class="fa-plus fa"></span> Adicionar
+            </button>
+        </a>
+    </div>
+  </div>
+  <div class="rectangle-38"></div>
+  <div class="frame-141">
+    <div class="stock-list">Lista de Estoque</div>
+    <div class="frame-140">
+      {% if object_list %}
+      <div class="table">
+        <div class="table-head">
+          <div class="nome-produto">Itens</div>
+          <div class="qtd-estoque-minimo ">Data</div>
+          <div class="edit">Funcionário</div>
+        </div>
+        <div class="line-3"></div>
         {% for object in object_list %}
-            <tr>
-                <td><a href="{% url 'estoque:estoque_detail' object.pk %}">{{ titulo }} {{ object }}</td>
-                <td>{{ object.created }}</td>
-                <td>{{ object.usuario.first_name }}</td> 
-            </tr>
-        {% empty %}
-        
-        {% endfor %}
-        </tbody>
-{% else %}
-    <p class="alert alert-warning">Sem itens na lista.</p>
-{% endif %}
+        <div class="table-rows">
+          <div class="table-row-1">
+            <div class="table-row">
+              <div class="frame-139">
+                <div class="group-726">
+                  <div class="nome"><a href="{% url 'estoque:estoque_detail' object.pk %}">{{ titulo }} {{ object }}</div>
+                  <div class="estoque_minimo">{{ object.created }}</div>
+                  <div class="editar">{{ object.usuario.first_name }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="line-3"></div>
+          {% endfor %}
+        </div>
+      </div>
+      {% else %}
+      <p class="alert alert-warning">Sem itens na lista</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
 
 {% endblock content %}
+

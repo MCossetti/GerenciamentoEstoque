@@ -1,60 +1,125 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% load widget_tweaks %} {% block content %} {% load static %}
+<link rel="stylesheet" href="{% static 'form/css/style.css' %}" />
 
-{% load widget_tweaks %}
-
-{% block content %}
-
-<h2>
-    {% if form.instance.pk %}
-        Editar Produto
-    {% else %}
-        Criar Produto
-    {% endif %}
-</h2>
-
+<div class="stocks-and-inventory-stock">
+    <a class="" href="{% url 'produto:produto_list' %}"> </a>
+<div class="rectangle-38"></div>
+    <div class="group-37">
+        <div class="frame-49">
+            <div class="back"><a class="" href="{% url 'produto:produto_list' %}"> </a></div>
+        </div>
 <form method="POST" enctype="multipart/form-data" novalidate>
-    {% csrf_token %}
-    {% for field in form.visible_fields %}
-        <div class="form-group{% if field.errors %} has-error {% endif %}">
-            <label for="{{ field.id_for_label }}">
-                {% if field.field.required %}
-                    <span class="required">{{ field.label }}</span>
-                {% else %}
-                    {{ field.label }}
-                {% endif %}
-            </label>
-            {% if field.name == 'imagem' %}
-                {% if form.instance.imagem %}
-                    <div class="mb-2">
-                        <img src="{{ form.instance.imagem.url }}" alt="Prévia da imagem" style="max-width: 150px; height: auto;">
-                    </div>
-                {% endif %}
-                {% render_field field class="form-control-file" %}
-            {% elif field.name == 'categoria' %}
-                <div class="d-flex align-items-center">
-                    {% render_field field class="form-control" %}
-                    <a href="{% url 'produto:categoria_add' %}" class="ml-2">
-                        <button type="button" class="btn btn-primary">
-                            <span class="fa fa-plus"></span> Criar Categoria
-                        </button>
-                    </a>
-                </div>
-            {% else %}
-                {% render_field field class="form-control" %}
-            {% endif %}
-            {% for error in field.errors %}
+            {% csrf_token %} {% for field in form.visible_fields %}
+    <div class="form-group {% if field.errors %} has-error {% endif %}">
+        <div class="frame-58">
+        {% if form.instance.imagem %}
+        <div class="add-photo">
+            <div class="ellipse-11"></div>
+            <div class="ellipse-12"></div>
+            <div class="frame-56">
+            <img src="{{ form.instance.imagem.url }}" alt="Prévia da imagem" style="max-width: 150px; height: auto" />
+                <div class="upload-photo">Imagem Atual</div>
+            </div>
+        </div>
+        {% endif %}
+        <div class="frame-57">
+           
+            {% render_field form.imagem class="form-control-file primary-button2" %}
+            <div class="allowed-format-jpg-jpeg-and-png">
+            <span>Formatos: JPG, JPEG, PNG</span>
+            </div>
+            <div class="max-file-size-2-mb">
+            <span>Tamanho Máximo: 2MB</span>
+            </div>
+            {% for error in form.imagem.errors %}
                 <span class="text-danger">{{ error }}</span>
             {% endfor %}
         </div>
+        </div>
+    </div>
+    <div class="frame-55">
+        <div class="frame-50">
+        <div class="input-field">
+            <div class="input-field2">
+            <div class="input-label">Nome do Produto</div>
+            {% render_field form.nome class="form-control" placeholder="Nome do produto" %}
+            {% for error in form.nome.errors %}
+                <span class="text-danger">{{ error }}</span>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="frame-51">
+        <div class="input-field">
+            <div class="input-field2">
+            <div class="input-label">Categoria</div>
+            <div class="d-flex align-items-center">
+                {% render_field form.categoria class="form-control" placeholder="" %}
+                <a href="{% url 'produto:categoria_add' %}" class="ml-2">
+                <button type="button" class="btn btn-primary">
+                    <span class="fa fa-plus"></span> Criar Categoria
+                </button>
+                </a>
+            </div>
+            {% for error in form.nome.errors %}
+                <span class="text-danger">{{ error }}</span>
+            {% endfor %}
+            </div>
+        </div>
+        <div class="input-field">
+            <div class="input-field2">
+            <div class="input-label">Preço Total</div>
+            {% render_field form.preco class="form-control" placeholder="Valor" %}
+            {% for error in form.nome.errors %}
+                <span class="text-danger">{{ error }}</span>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="frame-52">
+        <div class="input-field">
+            <div class="input-field2">
+            <div class="input-label">Estoque Atual</div>
+            {% render_field form.estoque class="form-control" placeholder="Quantidade em estoque" %}
+            {% for error in form.nome.errors %}
+                <span class="text-danger">{{ error }}</span>
+            {% endfor %}
+            </div>
+        </div>
+        <div class="input-field">
+            <div class="input-field2">
+            <div class="input-label">Estoque Mínimo</div>
+            {% render_field form.estoque_minimo class="form-control" placeholder="" %}
+            {% for error in form.nome.errors %}
+                <span class="text-danger">{{ error }}</span>
+            {% endfor %}
+            </div>
+        </div>
+        </div>
+    </div>
     {% endfor %}
-    
-    <button type="submit" class="btn btn-success">
-        {% if form.instance.pk %}
-            Atualizar
-        {% else %}
-            Criar
-        {% endif %}
-    </button>
+        <div class="button">
+            <div class="primary-button">
+                <button type="submit" class="btn primary-button button3">
+                    {% if form.instance.pk %}
+                        Atualizar
+                    {% else %}
+                        Criar
+                    {% endif %}
+                </button>
+            </div>
+        </div>
+    <div class="header">
+        <div class="frame-22">
+            <div class="frame-1">
+                <div class="stock">
+                    <img class="group-82" src="{% static 'list/images/Group 8.svg' %}" />
+                </div>
+                <div class="welcome-mr-otor-john">{% if form.instance.pk %} Editar Produto {% else %} Criar Produto {% endif %}</div>
+            </div>
+        </div>
+    </div>
 </form>
 
+</div>
 {% endblock content %}

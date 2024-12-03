@@ -13,6 +13,10 @@ from django.utils.decorators import method_decorator
 class EstoqueEntradaList(ListView):
     model = EstoqueEntrada
     template_name = 'estoque_list.html'
+
+    def get_queryset(self):
+        return EstoqueEntrada.objects.all().order_by('-created')
+    
     def get_context_data(self, **kwargs):
         context = super(EstoqueEntradaList, self).get_context_data(**kwargs)
         context['titulo'] = 'Entrada'
@@ -101,6 +105,9 @@ class EstoqueEntradaAdd(EstoqueAdd):
 class EstoqueSaidaList(ListView):
     model = EstoqueSaida
     template_name = 'estoque_list.html'
+
+    def get_queryset(self):
+        return EstoqueEntrada.objects.all().order_by('-created')
 
     def get_context_data(self, **kwargs):
         context = super(EstoqueSaidaList, self).get_context_data(**kwargs)
