@@ -1,12 +1,11 @@
 {% extends 'base.html' %}
-
 {% block content %}
 {% load static %}
 
 <link rel="stylesheet" href="{% static 'list/css/style.css' %}">
 
 <div class="stocks-and-inventory-stock">
-    <a class="" href="{% url 'produto:produto_list' %}"> </a>
+    <a href="{% url 'produto:produto_list' %}"> </a>
   <div class="update-stock-list">Estoque {{ titulo }}</div>
   <div class="button">
     <div class="button2">

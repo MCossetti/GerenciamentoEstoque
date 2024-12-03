@@ -1,62 +1,86 @@
-{% extends 'base.html' %}
-
+{% extends 'base.html' %} 
 {% block content %}
-<div class="row">
-  <div class="col-sm-6">
-    <form action="." method="GET" class="form-inline">
-      <input type="text" id="search" name="search" class="form-control" placeholder="Busca">
-      <input type="submit" class="btn btn-primary" style="margin-left: 10px;" value="Buscar">
-    </form>
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'list/css/style.css' %}">
+
+<div class="stocks-and-inventory-stock">
+  <a class="" href="{% url 'produto:produto_list' %}"> </a>
+  <div class="header">
+    <div class="group-1">
+      <div class="frame-2">
+        <div class="frame-1">
+          <div class="welcome-mr-otor-john"><img class="" src="{% static 'list/images/Group 8.svg' %}" alt=""/> Categoria</div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+  <div class="rectangle-34">
+    <div class="">
+      <div class="">
+        <form action="." method="GET" class="form-inline">
+          {% csrf_token %}
+          <input type="text" id="search" name="search" class="form-control" placeholder="Busca">
+          <input type="submit" class=" button3 " style="margin-left: 10px;" value="Buscar">
+        </form>
+      </div>
+    </div>
+  </div>
 
-<div class="page-reader">
-  <h2>
-    Categorias
-    <span class="pull-right">
-      <a href="{% url 'produto:categoria_add' %}">
-        <button type="button" class="btn btn-primary">
-          <span class="fa-plus fa"></span> Adicionar categoria
+  <div class="rectangle-35"></div>
+  <div class="update-stock-list">Adicionar Nova Categoria</div>
+  <div class="button">
+    <div class="button2"><a href="{% url 'produto:categoria_add' %}">
+        <button type="button" class="button2">
+          <span class=""></span> Adicionar Categoria
         </button>
-      </a>
-    </span>
-  </h2>
-
-  {% if categorias %}
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Nome</th>
-        <th class="text-center">Editar</th>
-        <th class="text-center">Excluir</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for categoria in categorias %}
-      <tr>
-        <td><a href="{{ categoria.get_absolute_url }}">{{ categoria.nome }}</a></td>
-        <td class="text-center">
-          <a href="{% url 'produto:categoria_edit' categoria.pk %}">
-            <button type="button" class="btn btn-success">
-              <span class="fa fa-pencil"></span>
-            </button>
-          </a>
-        </td>
-        <td class="text-center">
-          <form action="{% url 'produto:categoria_delete' categoria.pk %}" method="POST" id="delete-form-{{ categoria.pk }}">
-            {% csrf_token %}
-            <button type="button" class="btn btn-danger" onclick="confirmDelete('{{ categoria.pk }}')">
-              <span class="fa fa-trash"></span>
-            </button>
-          </form>
-        </td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-  {% else %}
-  <p class="alert alert-warning">Sem categorias cadastradas</p>
-  {% endif %}
+      </a></div>
+  </div>
+  <div class="rectangle-38"></div>
+  <div class="frame-141">
+    <div class="stock-list">Lista de Categorias</div>
+    <div class="frame-140">
+      {% if categorias  %}
+      <div class="table">
+        <div class="table-head">
+          <div class="nome-produto">Nome</div>
+          <div class="edit">Editar</div>
+          <div class="status">Excluir</div>
+        </div>
+        {% for categoria in categorias %}
+        <div class="table-rows">
+          <div class="table-row-1">
+            <div class="table-row">
+              <div class="frame-139">
+                <div class="group-726">
+                  <div class="nome"><a href="{{ categoria.get_absolute_url }}">{{ categoria.nome }}</a></div>
+                  <div class="editar">
+                    <a href="{% url 'produto:categoria_edit' categoria.pk %}">
+                      <button type="button" class="btn btn-success">
+                        <span class="fa fa-pencil"></span>
+                      </button>
+                    </a>
+                  </div>
+                  <div class="excluir">
+                      <form action="{% url 'produto:categoria_delete' categoria.pk %}" method="POST" id="delete-form-{{ categoria.pk }}">
+                        {% csrf_token %}
+                        <button type="button" class="btn btn-danger" onclick="confirmDelete('{{ categoria.pk }}')">
+                          <span class="fa fa-trash"></span>
+                        </button>
+                      </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% else %}
+      <p class="alert alert-warning">Sem itens na lista</p>
+      {% endif %}
+    </div>
+  </div>
 </div>
 
 <script type="text/javascript">

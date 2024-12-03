@@ -1,22 +1,38 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %} {% load static %}
 
-{% block content %}
-  <h2>
-    {% if form.instance.pk %}
-      Alterar Categoria
-    {% else %}
-      Criar Categoria
-    {% endif %}
-  </h2>
-  <form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">
+<a href="{% url 'produto:produto_list' %}"> </a>
+
+<link rel="stylesheet" href="{% static 'detail/css/style.css' %}">
+
+<div class="stocks-and-inventory-stock">
+  <a class="" href="{% url 'produto:produto_list' %}"> </a>
+  <div class="rectangle-38"></div>
+  <div class="frame-141">
+    <div class="stock-list">
       {% if form.instance.pk %}
-        Alterar
+        Alterar Categoria
       {% else %}
-        Criar
+        Criar Categoria
       {% endif %}
-    </button>
-  </form>
-{% endblock %}
+  </div>
+    <div class="frame-140">
+      <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+      <div class="table">
+        <div class="">
+          <div class="image">
+            <button type="submit" class="btn button2 ">
+              {% if form.instance.pk %}
+                Alterar
+              {% else %}
+                Criar
+              {% endif %}
+            </button>
+          </div>      
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock content %}

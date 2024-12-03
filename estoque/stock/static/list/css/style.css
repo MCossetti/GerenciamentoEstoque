@@ -89,16 +89,6 @@ body {
   left: 620px;
 }
 
-.rectangle-35 {
-  background: #ffffff;
-  border-radius: 20px;
-  width: 1148px;
-  height: 65px;
-  position: absolute;
-  left: 30px;
-  top: 0px;
-}
-
 .update-stock-list {
   color: var(--relia-energy-black, #272525);
   text-align: left;
@@ -106,7 +96,7 @@ body {
   font-size: var(--heading-4-font-size, 20px);
   font-weight: var(--heading-4-font-weight, 800);
   position: absolute;
-  left: 50px;
+  left: 30px;
 }
 
 .button {
