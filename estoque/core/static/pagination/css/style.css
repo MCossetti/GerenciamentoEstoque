@@ -1,0 +1,182 @@
+.pagination,
+.pagination * {
+  box-sizing: border-box;
+}
+.pagination {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: relative;
+}
+.frame-39 {
+  background: var(
+    --relia-energy-gradient,
+    linear-gradient(135deg, rgba(20, 173, 214, 1) 0%, rgba(56, 66, 149, 1) 100%)
+  );
+  border-radius: 5px;
+  border-width: 1px;
+  border-style: solid;
+  border-image: var(
+    --relia-energy-gradient,
+    linear-gradient(135deg, rgba(20, 173, 214, 1) 0%, rgba(56, 66, 149, 1) 100%)
+  );
+  border-image-slice: 1;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  position: relative;
+}
+._1 {
+  color: #ffffff;
+  text-align: left;
+  font-family: var(--body-2-normal-font-family, "Nunito-Regular", sans-serif);
+  font-size: var(--body-2-normal-font-size, 14px);
+  line-height: var(--body-2-normal-line-height, 24px);
+  font-weight: var(--body-2-normal-font-weight, 400);
+  position: relative;
+  width: 9px;
+  height: 24px;
+}
+.frame-43 {
+  border-radius: 5px;
+  border-style: solid;
+  border-color: var(--grey-50, #a3a3a3);
+  border-width: 1px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  position: relative;
+}
+._2 {
+  color: var(--relia-energy-black, #272525);
+  text-align: left;
+  font-family: var(--body-2-normal-font-family, "Nunito-Regular", sans-serif);
+  font-size: var(--body-2-normal-font-size, 14px);
+  line-height: var(--body-2-normal-line-height, 24px);
+  font-weight: var(--body-2-normal-font-weight, 400);
+  position: relative;
+  width: 9px;
+  height: 24px;
+}
+.frame-44 {
+  border-radius: 5px;
+  border-style: solid;
+  border-color: var(--grey-50, #a3a3a3);
+  border-width: 1px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  position: relative;
+}
+._3 {
+  color: var(--relia-energy-black, #272525);
+  text-align: left;
+  font-family: var(--body-2-normal-font-family, "Nunito-Regular", sans-serif);
+  font-size: var(--body-2-normal-font-size, 14px);
+  line-height: var(--body-2-normal-line-height, 24px);
+  font-weight: var(--body-2-normal-font-weight, 400);
+  position: relative;
+  width: 9px;
+  height: 24px;
+}
+.frame-45 {
+  border-radius: 5px;
+  border-style: solid;
+  border-color: var(--grey-50, #a3a3a3);
+  border-width: 1px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  position: relative;
+}
+._4 {
+  color: var(--relia-energy-black, #272525);
+  text-align: left;
+  font-family: var(--body-2-normal-font-family, "Nunito-Regular", sans-serif);
+  font-size: var(--body-2-normal-font-size, 14px);
+  line-height: var(--body-2-normal-line-height, 24px);
+  font-weight: var(--body-2-normal-font-weight, 400);
+  position: relative;
+  width: 9px;
+  height: 24px;
+}
+.frame-46 {
+  border-radius: 5px;
+  border-style: solid;
+  border-color: var(--grey-50, #a3a3a3);
+  border-width: 1px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  position: relative;
+}
+._5 {
+  color: var(--relia-energy-black, #272525);
+  text-align: left;
+  font-family: var(--body-2-normal-font-family, "Nunito-Regular", sans-serif);
+  font-size: var(--body-2-normal-font-size, 14px);
+  line-height: var(--body-2-normal-line-height, 24px);
+  font-weight: var(--body-2-normal-font-weight, 400);
+  position: relative;
+  width: 9px;
+  height: 20px;
+}
+.frame-47 {
+  border-radius: 5px;
+  border-style: solid;
+  border-color: var(--grey-50, #a3a3a3);
+  border-width: 1px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  position: relative;
+}
+.div {
+  color: var(--relia-energy-black, #272525);
+  text-align: left;
+  font-family: var(--body-2-normal-font-family, "Nunito-Regular", sans-serif);
+  font-size: var(--body-2-normal-font-size, 14px);
+  line-height: var(--body-2-normal-line-height, 24px);
+  font-weight: var(--body-2-normal-font-weight, 400);
+  position: relative;
+  width: 17px;
+  height: 24px;
+}

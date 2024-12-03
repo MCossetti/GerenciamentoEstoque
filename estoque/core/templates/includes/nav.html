@@ -1,39 +1,76 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="#">Estoque</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+{% load static %}
 
-    <div class="collapse navbar-collapse  bg-body-tertiary" id="navbarsExampleDefault">
-        {% if request.user.is_authenticated %}
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'core:index' %}">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'produto:produto_list' %}">Estoque</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Histórico Estoque</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown01">
-                        <a class="dropdown-item" href="{% url 'estoque:estoque_entrada_list' %}">Entrada</a>
-                        <a class="dropdown-item" href="{% url 'estoque:estoque_saida_list' %}">Saída</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Bola</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown01">
-                        {% if request.user.is_authenticated %} 
-                        {% if request.user.is_superuser %} 
-                            <a class="dropdown-item" href="{% url 'admin:index' %}">Configuração</a>
-                        {% endif %}
-                        <form style="color:white;" action="{% url 'logout' %}" method="post">
-                                {% csrf_token %}
-                            <button type="submit" style="background: none; border: none; margin-left: 18px;" class="">Logout</button>
-                        </form>
-                        {% endif %}
-                    </div>
-                </li>
-            </ul>
-        {% endif %}
-</nav>
+<link rel="stylesheet" href="{% static 'nav/css/style.css' %}">
+
+{% if request.user.is_authenticated %}
+<div class="side-bar">
+  <div class="menu-items">
+    <div class="payroll">
+      <div class="group-3">
+        <div class="rectangle-8"></div>
+        <div class="frame-7">
+          <div class="staff3"><a href="{% url 'produto:produto_list' %}"><img class="staff2" src="{% static 'nav/images/Group 8.svg' %}" alt="" />      Estoque</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="line-3"></div>
+    <div class="payroll">
+      <div class="rectangle-9"></div>
+      <div class="group-3">
+        <div class="rectangle-8"></div>
+        <div class="frame-7">
+            <a href="{% url 'core:index' %}">
+                <img class="staff2" src="{% static 'nav/images/circulars.svg' %}" alt="" />
+            </a>
+            <div class="staff3">
+                <a href="{% url 'estoque:estoque_entrada_list' %}">   Entrada</a>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="line-3"></div>
+    <div class="payroll">
+      <div class="rectangle-9"></div>
+      <div class="group-3">
+        <div class="rectangle-8"></div>
+        <div class="frame-7">
+           <a href="{% url 'core:index' %}"><img class="staff2" src="{% static 'nav/images/Group 3.svg' %}" alt="" />
+          <div class="staff3"><a href="{% url 'estoque:estoque_saida_list' %}">   Saída</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="line-3"></div>
+    {% if request.user.is_authenticated %}
+    {% if request.user.is_superuser %} 
+    <div class="circulars">
+      <div class="rectangle-9"></div>
+      <div class="group-3">
+        <div class="rectangle-8"></div>
+        <div class="frame-7">
+            <a href="{% url 'core:index' %}"><img class="staff2" src="{% static 'nav/images/Group 4.svg' %}" alt="" />
+            <div class="staff3"><a href="{% url 'admin:index' %}">   Configuração</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="line-3"></div>
+    {% endif %}
+    <div class="circulars">
+      <div class="rectangle-9"></div>
+      <div class="group-3">
+        <div class="rectangle-8"></div>
+        <div class="frame-7">
+           <div class="staff3">
+                <form style="color:white;" action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <a href="{% url 'core:index' %}"><img class="staff2" src="{% static 'nav/images/Dashboard.svg' %}" alt="" />   
+                    <button type="submit" style="background: none; border: none;" class="">Logout</button>
+                </form>
+            </div>
+        </div>
+      </div>
+      <div class="line-3"></div>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endif %}
