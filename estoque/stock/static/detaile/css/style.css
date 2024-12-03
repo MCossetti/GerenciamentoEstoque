@@ -60,6 +60,31 @@ body {
   left: 20px;
 }
 
+.tam{
+  width: 120px;
+}
+
+.button4 {
+  color: white;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 120px;
+  height: 45px;
+  position: relative;
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  outline: none;
+  left: 20px;
+  margin: 10px;
+}
+
 .stocks-and-inventory-stock {
   background: #f8f9fd;
   flex-shrink: 0;
@@ -86,6 +111,10 @@ body {
 
 .form-control2{
   left: 620px;
+}
+
+form{
+  width: 900px;
 }
 
 .rectangle-35 {
@@ -136,6 +165,17 @@ body {
   position: absolute;
   left: 350px;
   top: 20px;
+  overflow: auto;
+}
+
+.rectangle-382 {
+  background: #ffffff;
+  border-radius: 20px;
+  width: 1100px;
+  height: 500px;
+  position: absolute;
+  left: 100px;
+  top: 30px;
 }
 
 .frame-141 {
@@ -149,6 +189,17 @@ body {
   top: 50px;
 }
 
+.frame-1412 {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  left: 150px;
+  top: 50px;
+}
+
 .stock-list {
   color: var(--relia-energy-black, #272525);
   text-align: left;
@@ -158,6 +209,9 @@ body {
   position: relative;
 }
 
+label.control-label{
+  margin-left: 20px;
+}
 .frame-140 {
   display: flex;
   flex-direction: row;
@@ -184,14 +238,15 @@ body {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  align-items: flex-start;
+  align-items: center;
   justify-content: flex-start;
   flex-shrink: 0;
   position: relative;
-  height: 450px;
-  width: 300px;
+  height: 200px;
+  width: 400px;
   top: 120px;
-  left: 80px;
+  left: 10px;
+  overflow-y: auto;
 }
 
 tbody {
@@ -206,7 +261,7 @@ th {
 td {
   margin-right: 100px;
   padding-right: 5px;
-  width: 90px;
+  width: 33%;
   align-items: center;
   justify-content: center;
 }

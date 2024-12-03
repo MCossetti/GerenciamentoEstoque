@@ -1,51 +1,42 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block content %}
 {% load static %}
 {% load widget_tweaks %}
 {% load bootstrap %}
+<a href="{% url 'produto:produto_list' %}"> </a>
 
-{% block css %}
+<link rel="stylesheet" href="{% static 'detaile/css/style.css' %}">
 
-  <style>
-    .form-control {
-      margin: 10px;
-    }
-    .form-control {
-        margin: 10px;
-    }
-  </style>
+<div class="stocks-and-inventory-stock">
+  <a class="" href="{% url 'produto:produto_list' %}"> </a>
+  <div class="rectangle-382"></div>
+  <div class="frame-1412">
+    <div class="stock-list">
+      <div class="row">
+        <div class="cols">
+          <form method="POST" novalidate>
+            {% csrf_token %}
+            <legend style="border-bottom: 1px solid #e5e5e5;">Estoque Entrada</legend>
 
-{% endblock css %}
-
-{% block content %}
-
-  <a class="btn btn-primary" href="{% url 'estoque:estoque_entrada_list' %}">Voltar</a>
-
-  <div class="row">
-    <div class="cols">
-      <form method="POST" novalidate>
-        {% csrf_token %}
-        <legend style="border-bottom: 1px solid #e5e5e5;">Estoque Entrada</legend>
-
-        <div class="row">
-          <div class="col-sm-6">
-            {% for field in form.visible_fields %}
-              <div class="form-group{% if field.errors %} has-error {% endif%}">
-                <label for="{{ field.id_for_label }}">
-                  {% if field.field.required %}
-                    <span class="required">{{ field.label }} </span>
-                  {% else %}
-                    {{ field.label }}
-                  {% endif %}
-                </label>
-                {% render_field field class="form-control" %}
-                {% for error in field.errors %}
-                  <span class="text-muted">{{ error }}</span>
+            <div class="row">
+              <div class="col-sm-6">
+                {% for field in form.visible_fields %}
+                  <div class="form-group{% if field.errors %} has-error {% endif%}">
+                    <label for="{{ field.id_for_label }}">
+                      {% if field.field.required %}
+                        <span class="required">{{ field.label }} </span>
+                      {% else %}
+                        {{ field.label }}
+                      {% endif %}
+                    </label>
+                    {% render_field field class="form-control" %}
+                    {% for error in field.errors %}
+                      <span class="text-muted">{{ error }}</span>
+                    {% endfor %}
+                  </div>
                 {% endfor %}
+                {{ formset.management_form }}
               </div>
-            {% endfor %}
-            {{ formset.management_form }}
-          </div>
-        </div>
+            </div>
 
         <div class="row">
           <div class="col-sm-12">
@@ -60,18 +51,18 @@
           </div>
         </div>
 
-        <span id="add-item" class="btn btn-info" style="margin-top: 10px;">
+        <span id="add-item" class="btn button2" style="margin-top: 10px;">
           <i class="fa fa-plus"></i> Adicionar
         </span>
 
         <div class="row float-right">
           <div class="col-sm-12" style="margin-top: 10px;">
             <div class="form-inline buttons">
-              <button class="btn btn-primary" value="Save">
+              <button class="btn btn-primary button3 tam" value="Save">
                 <i class="fa fa-floppy-o"></i>
                 Salvar
               </button>
-              <a href="{% url 'estoque:estoque_entrada_list' %}" class="btn btn-danger">
+              <a href="{% url 'estoque:estoque_entrada_list' %}" class="btn button4 btn-danger">
                 <i class="fa fa-times"></i>
                 Cancelar
               </a>
