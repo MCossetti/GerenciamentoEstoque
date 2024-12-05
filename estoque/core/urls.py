@@ -1,6 +1,5 @@
 from django.urls import path
 from estoque.core import views as v
-from django.views.generic.base import RedirectView
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
 
