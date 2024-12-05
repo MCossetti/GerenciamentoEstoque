@@ -1,13 +1,13 @@
+from django.contrib.auth.decorators import login_required
 from django.forms import inlineformset_factory
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, resolve_url
+from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.generic import ListView, DetailView
 from estoque.produto.models import Produto
 from .forms import EstoqueForm, EstoqueProdutoForm
 from .models import Estoque, EstoqueEntrada, EstoqueSaida, EstoqueProduto
-from django.contrib.auth.decorators import login_required
-from django.utils.decorators import method_decorator
 
 @method_decorator(login_required, name='dispatch')
 class EstoqueEntradaList(ListView):
@@ -37,7 +37,6 @@ class EstoqueBaixa(View):
             produto = Produto.objects.get(pk=item.produto.pk)
             produto.estoque = item.saldo
             produto.save()
-        print('Estoque atualizado com sucesso.')
 
 class EstoqueAdd(View):
     template_name = None

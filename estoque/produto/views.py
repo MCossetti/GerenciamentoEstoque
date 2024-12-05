@@ -29,7 +29,6 @@ class ProdutoDetail(DetailView):
     template_name = 'produto_detail.html'
     context_object_name = 'object'
 
-
 class ProdutoAddView(TemplateView):
     template_name = 'produto_form.html'
 
