@@ -6,8 +6,8 @@
 
 <div class="stocks-and-inventory-stock">
     <a href="{% url 'produto:produto_list' %}"> </a>
-  <div class="update-stock-list">Estoque {{ titulo }}</div>
-  <div class="button">
+  <div class="update-stock-list" style="top: 30px;">Estoque {{ titulo }}</div>
+  <div class="button" style="top: 30px;">
     <div class="button2">
         <a href="{% url url_add %}">
             <button type="button" class="button2">
@@ -16,8 +16,8 @@
         </a>
     </div>
   </div>
-  <div class="rectangle-38"></div>
-  <div class="frame-141">
+  <div class="rectangle-38" style="top: 100px;"></div>
+  <div class="frame-141" style="top: 120px;">
     <div class="stock-list">Lista de Estoque</div>
     <div class="frame-140">
       {% if object_list %}
